@@ -19,7 +19,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.[jt]sx?$/,
                 include: /(assets\/js|assets\\js|stencil-utils)/,
                 use: {
                     loader: 'babel-loader',
@@ -35,6 +35,8 @@ module.exports = {
                                 useBuiltIns: 'entry',
                                 corejs: '^3.6.5',
                             }],
+                            '@babel/preset-typescript',
+                            ['@babel/preset-react', { runtime: 'automatic' }],
                         ],
                     },
                 },
@@ -76,6 +78,7 @@ module.exports = {
         }),
     ],
     resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.json'],
         fallback: { url: require.resolve('url/') },
         alias: {
             jquery: path.resolve(__dirname, 'node_modules/jquery/dist/jquery.min.js'),

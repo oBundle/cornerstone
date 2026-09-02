@@ -35,7 +35,16 @@
         "import/prefer-default-export": "off",
         "no-tabs": "warn",
         "no-mixed-spaces-and-tabs": "warn",
-        "import/order": "warn"
+        "import/order": "warn",
+        "import/extensions": [
+            2,
+            "ignorePackages",
+            {
+                "js": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ]
     },
     "overrides": [
         {
@@ -54,6 +63,31 @@
                 "object-curly-newline": "warn",
                 "no-else-return": "warn"
             }
+        },
+        {
+            "files": [
+                "**/*.ts",
+                "**/*.tsx"
+            ],
+            "parser": "@typescript-eslint/parser",
+            "parserOptions": {
+                "project": "./tsconfig.json"
+            },
+            "plugins": [
+                "@typescript-eslint"
+            ],
+            "extends": [
+                "plugin:@typescript-eslint/recommended",
+                "plugin:import/typescript"
+            ],
+            "rules": {
+                "no-unused-vars": "off",
+                "@typescript-eslint/no-unused-vars": "error",
+                "no-shadow": "off",
+                "@typescript-eslint/no-shadow": "error",
+                "no-use-before-define": "off",
+                "@typescript-eslint/no-use-before-define": "error"
+            }
         }
     ],
     "globals": {
@@ -66,5 +100,19 @@
         "jasmine": true,
         "jest": true
     },
-    "extends": "airbnb/base"
+    "extends": "airbnb/base",
+    "settings": {
+        "import/resolver": {
+            "typescript": {
+                "project": "./tsconfig.json"
+            },
+            "node": {
+                "extensions": [
+                    ".js",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        }
+    }
 }

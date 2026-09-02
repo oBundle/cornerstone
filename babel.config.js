@@ -12,6 +12,8 @@ module.exports = api => {
                 useBuiltIns: 'usage', // Tree-shake babel-polyfill
                 ...targets,
             }],
+            '@babel/preset-typescript',
+            ['@babel/preset-react', { runtime: 'automatic' }],
         ],
     };
 }
