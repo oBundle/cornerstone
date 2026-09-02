@@ -179,7 +179,7 @@ module.exports = {
     // A map from regular expressions to paths to transformers
     transform: {
         'eventemitter2\\.js$': [path.resolve(__dirname, 'jest-eventemitter2-transformer.js'), {}],
-        '\\.js$': ['babel-jest', {}],
+        '\\.[jt]sx?$': ['babel-jest', {}],
     },
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
